@@ -1,49 +1,64 @@
-🚀 FSTAB Manager PRO
-Moderní, lehké a bezpečné webové rozhraní pro správu souboru /etc/fstab v systémech Linux (optimalizováno pro KDE Plasma). Už žádné ruční upravování konfiguračních souborů v terminálu a strach z chyb v syntaxi.
 
-✨ Funkce
-Pohodlná správa: Přidávání a mazání přípojných bodů (disků) přes čisté webové UI.
+# 🚀 FSTAB Manager PRO
 
-Bezpečnost na prvním místě: Automatická integrace s pkexec pro grafické vyžádání hesla roota.
+Moderní, lehké a bezpečné webové rozhraní pro správu systémového souboru `/etc/fstab` v Linuxu. Navrženo speciálně pro uživatele KDE Plasma (Dolphin), ale plně funkční v jakémkoliv distribuci.
 
-Systémová kontrola: Přímý výhled na lsblk (seznam disků) a surový obsah fstab přímo v aplikaci.
+!
 
-Aplikace změn: Tlačítko pro mount -a a daemon-reload, které okamžitě aktivuje provedené změny.
+## ✨ Hlavní funkce
 
-Ultra-Wide Design: Moderní tmavý vzhled, který využívá celou šířku monitoru a je skvěle čitelný.
+- **Správa v reálném čase:** Přidávání, odebírání a úprava přípojných bodů disků přes webové UI.
+- **Bezpečné oprávnění:** Automatická integrace s `pkexec` (PolicyKit) – skript si sám vyžádá heslo roota v grafickém okně.
+- **Inteligentní otevírání:** Při spuštění z Dolphinu se automaticky identifikuje uživatel a otevře se prohlížeč v jeho seanci.
+- **Systémová diagnostika:** Integrovaný výpis `lsblk -f` pro snadné kopírování UUID a kontrolu disků.
+- **Aplikace změn:** Možnost provést `systemctl daemon-reload` a `mount -a` přímo z prohlížeče.
+- **Ultra-Wide Design:** Tmavé téma (Dark Mode) optimalizované pro širokoúhlé monitory s důrazem na čitelnost.
 
-Auto-Open: Po spuštění z Dolphinu nebo konzole se automaticky otevře tvůj výchozí prohlížeč.
+## 🛠️ Instalace
 
-🛠️ Instalace a spuštění
-1. Prerekvizity
-Aplikace vyžaduje Python 3 a knihovnu Flask. Nainstaluješ ji snadno:
+Aplikace vyžaduje Python 3 a knihovnu Flask.
 
-Bash
+```bash
+# Instalace na Debian/Ubuntu/Kubuntu:
 sudo apt update
 sudo apt install python3-flask
-2. Stažení
-Ulož skript fstab_manager.py do svého domovského adresáře.
 
-3. Spuštění z terminálu
+# Instalace na Arch Linux:
+sudo pacman -S python-flask
+
+# Instalace na Fedora:
+sudo dnf install python3-flask
+🚀 Jak používat
+Spuštění z terminálu
 Bash
 python3 fstab_manager.py
-4. Nastavení pro Dolphin (KDE)
-Aby se aplikace spouštěla na jedno kliknutí přímo ze správce souborů:
+Spuštění z Dolphinu (KDE)
+Klikněte pravým tlačítkem na fstab_manager.py.
 
-Klikni na fstab_manager.py pravým tlačítkem.
+Zvolte Vlastnosti -> Oprávnění.
 
-Vyber Vlastnosti -> Oprávnění.
+Zaškrtněte Je spustitelný (Is executable).
 
-Zaškrtni Je spustitelný.
+Napříště stačí na soubor poklepat a zvolit Spustit.
 
-Nyní stačí na soubor kliknout a zvolit Spustit.
+🖥️ Náhled rozhraní
+Aplikace běží lokálně na portu 5005 (nebo prvním volném). Rozhraní je rozděleno do tří hlavních sekcí pod sebou:
 
-🖥️ Technologie
-Backend: Python 3 + Flask
+Tabulka fstab: Aktuálně zavedené disky s možností smazání.
 
-Frontend: HTML5, CSS3 (Modern Dark Theme), FontAwesome 6
+lsblk: Seznam všech fyzických disků a jejich UUID pro snadné vkládání.
 
-Systém: Linux (testováno na KDE Plasma, Debian/Ubuntu/Kubuntu)
+Raw fstab: Surový náhled textového souboru pro kontrolu.
 
-⚠️ Varování
-Úprava souboru /etc/fstab je kritická operace. Před aplikací změn se ujistěte, že zadané UUID nebo cesty k diskům jsou správné. Aplikace automaticky vytváří přípojné body (složky), pokud neexistují.
+⚠️ Důležité upozornění
+Soubor /etc/fstab je kritickou součástí systému.
+
+Před smazáním řádku se ujistěte, že nejde o systémový oddíl (root / nebo /boot).
+
+Aplikace při přidávání disku automaticky vytvoří cílovou složku (mountpoint), pokud ještě neexistuje.
+
+📄 Licence
+Tento projekt je open-source. Upravujte a šiřte dle libosti.
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+Nevybrán žádný soubor
+Attach files by dragging & dropping, selecting or pasting them.
